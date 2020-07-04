@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var animalsExpanded: Bool = true
+    let animals = ["😀", "🤹‍♂️", "🎲"]
+    
+    
     var body: some View {
-        Text("Hello, world!").padding()
+        DisclosureGroup(
+            isExpanded: $animalsExpanded,
+            content: {
+                ForEach(animals, id: \.self) { animals in
+                    Text(animals)
+                }
+            },
+            label: { Text("Animals") }
+)
     }
 }
 
